@@ -25,6 +25,16 @@ class UserBehavior(TaskSet):
         self.client.get(f"{self.BASE_URL}users", headers=headers)
 
     @task(1)
+    def userInfo(self):
+        headers = {"Authorization": f"Bearer {self.token}"}
+        self.client.get(f"{self.BASE_URL}users/2", headers=headers)
+
+    @task(1)
+    def userCars(self):
+        headers = {"Authorization": f"Bearer {self.token}"}
+        self.client.get(f"{self.BASE_URL}users/2/cars", headers=headers)
+
+    @task(1)
     def brands(self):
         headers = {"Authorization": f"Bearer {self.token}"}
         self.client.get(f"{self.BASE_URL}cars/brands", headers=headers)
